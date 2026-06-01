@@ -185,6 +185,7 @@ details.toggle-box[open] .toggle-icon { transform: rotate(-90deg); }
 .product-tag   { font-size:12px; font-weight:700; padding:6px 14px; border-radius:20px; letter-spacing:0.3px; }
 .tag-orange { background:#FFF3E0; color:#FB8C00; }
 .tag-blue   { background:var(--primary-light); color:var(--primary); }
+.tag-gray   { background:#E5E8EB; color:var(--text2); } /* 회색 뱃지 스타일 추가 */
 .product-price { font-size:24px; font-weight:800; color:var(--primary); margin-bottom:6px; letter-spacing:-0.5px;}
 .product-sub   { font-size:14px; color:var(--text2); margin-bottom:16px; font-weight: 400; line-height: 1.5;}
 .pf { font-size:14px; color:var(--text2); display:flex; align-items:flex-start; gap:10px; margin-bottom:6px; font-weight: 400; line-height: 1.4;}
@@ -656,6 +657,13 @@ details.toggle-result { margin: 0 24px; border-radius: var(--radius); }
     <div class="q-title">추천 상조 상품을 확인해보세요</div>
     <div class="q-sub">가입 상품에 따라 서비스와 납입금이 달라져요</div>
 
+    <div class="product-card no-sangjo" id="opt-sangjo-none" onclick="pickProduct(this, 'none')">
+      <div class="product-header" style="margin-bottom:0;">
+        <div class="product-name">상조 없이 계산하기</div>
+        <div class="product-tag tag-gray">상조 미가입 기준</div>
+      </div>
+    </div>
+
     <div class="product-card" id="opt-sangjo-hundred" onclick="pickProduct(this, 'hundred')">
       <div class="product-header">
         <div class="product-name">100원 상조</div>
@@ -686,12 +694,6 @@ details.toggle-result { margin: 0 24px; border-radius: var(--radius); }
       <div class="pf">언제든 100% 해약 가능</div>
       <div class="pf">물가 상승과 무관한 고정 장례비</div>
       <div class="pf">장례인력 및 용품 제공</div>
-    </div>
-
-    <div class="product-card no-sangjo" id="opt-sangjo-none" onclick="pickProduct(this, 'none')">
-      <div class="product-header" style="margin-bottom:0;">
-        <div class="product-name">상조 없이 계산하기</div>
-      </div>
     </div>
 
   </div>
@@ -959,6 +961,10 @@ function goNext(screenId) {
   } else if (screenId === 's-burial') {
     if (!state.burial) return;
     nav('s-sangjo');
+    if (!state.sangjo) {
+      const noneCard = document.getElementById('opt-sangjo-none');
+      if (noneCard) pickProduct(noneCard, 'none');
+    }
   }
 }
 
