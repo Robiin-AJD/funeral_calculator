@@ -42,14 +42,14 @@ html, body { height:100%; font-family:'Pretendard', sans-serif; background:var(-
 
 /* OPTIONS */
 .options { display:flex; flex-direction:column; gap:14px; margin-bottom:20px; }
-.opt-card, .product-card {
+.opt-card {
   background:var(--card); border:none; border-radius:var(--radius); padding:20px 22px;
   cursor:pointer; transition:all var(--dur) var(--ease); display:flex; align-items:center; gap:18px;
   box-shadow:var(--shadow-card); position: relative; overflow: hidden;
 }
-.opt-card:active, .product-card:active { transform: scale(0.97); }
-.opt-card:not(.selected):hover, .product-card:not(.selected):hover { background: #F9FAFB; }
-.opt-card.selected, .product-card.selected { background:var(--primary-light); box-shadow: inset 0 0 0 2px var(--primary), var(--shadow-card); }
+.opt-card:active { transform: scale(0.97); }
+.opt-card:not(.selected):hover { background: #F9FAFB; }
+.opt-card.selected { background:var(--primary-light); box-shadow: inset 0 0 0 2px var(--primary), var(--shadow-card); }
 
 .opt-text  { flex:1; }
 .opt-title { font-size:17px; font-weight:700; color:var(--text); margin-bottom:6px; letter-spacing: -0.3px; }
@@ -60,7 +60,7 @@ html, body { height:100%; font-family:'Pretendard', sans-serif; background:var(-
   flex-shrink:0; display:flex; align-items:center; justify-content:center;
   font-size:13px; color:transparent; transition:all var(--dur) var(--ease);
 }
-.opt-card.selected .opt-check, .product-card.selected .opt-check { background:var(--primary); border-color:var(--primary); color:#fff; }
+.opt-card.selected .opt-check { background:var(--primary); border-color:var(--primary); color:#fff; }
 
 /* 2x2 GRID */
 .grid-2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
@@ -109,13 +109,7 @@ html, body { height:100%; font-family:'Pretendard', sans-serif; background:var(-
 .primary-btn:active { transform: scale(0.97); opacity: 0.95; }
 
 /* INTRO */
-.intro-wrap { padding:32px 24px 24px; display:flex; flex-direction:column; flex:1; background: var(--bg); }
-.intro-nav {
-  position: sticky; bottom: 0; left: 0; width: 100%; z-index: 1000;
-  padding: 16px 24px 32px; display:flex; flex-direction:column; flex-shrink:0;
-  background: linear-gradient(180deg, rgba(242, 244, 246, 0) 0%, var(--bg) 20%, var(--bg) 100%);
-  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-}
+.intro-wrap { padding:32px 24px 64px; display:flex; flex-direction:column; flex:1; background: var(--bg); }
 .intro-brand-pill {
   display:inline-block; background:var(--primary-light); color:var(--primary);
   padding:8px 16px; border-radius:20px; font-size:13px; font-weight:700; letter-spacing:0.3px; margin-bottom:20px;
@@ -123,7 +117,7 @@ html, body { height:100%; font-family:'Pretendard', sans-serif; background:var(-
 .intro-title-card {
   background-image: url('https://img2.stibee.com/124812_3411643_1779931028223542672.png');
   background-size: cover; background-position: center; background-repeat: no-repeat;
-  border:none; border-radius:var(--radius); margin-bottom:24px; box-shadow:var(--shadow-card);
+  border:none; border-radius:var(--radius); margin-bottom:16px; box-shadow:var(--shadow-card);
   display:flex; min-height: 280px; background-color: #F8F6F2; overflow: hidden;
 }
 .intro-title-text {
@@ -133,24 +127,17 @@ html, body { height:100%; font-family:'Pretendard', sans-serif; background:var(-
 }
 .intro-title { font-size:32px; font-weight:900; line-height:1.2; margin-bottom:14px; color:var(--text); letter-spacing:-1px; }
 .intro-sub   { font-size:18px; color:var(--primary); line-height:1.4; font-weight: 800; letter-spacing:-0.3px; margin-bottom: 12px; word-break: keep-all; }
-.intro-thin  { font-size:13px; color:var(--text2); line-height:1.5; font-weight: 500; word-break: keep-all; }
+.intro-thin  { font-size:14px; color:var(--text2); line-height:1.5; font-weight: 500; word-break: keep-all; }
+.intro-meta { text-align:center; font-size:13px; color:var(--text3); margin-top:12px; font-weight: 500; margin-bottom: 32px;}
 
-/* 공통 Toggle(Details) 스타일 */
-.section-label { font-size:14px; font-weight:800; color:var(--text2); margin-bottom:12px; padding-left: 4px; letter-spacing: -0.2px; }
-details.toggle-box {
-  background:var(--card); border:none; margin-bottom: 12px;
-  border-radius:var(--radius-sm); overflow:hidden; box-shadow:var(--shadow-card);
-}
-details.toggle-box summary {
-  padding:18px 20px; font-size:15px; font-weight:700; cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; user-select:none; color: var(--text);
-}
-details.toggle-box summary::-webkit-details-marker { display:none; }
-.toggle-icon { color: var(--text3); display: flex; align-items: center; justify-content: center; transition: transform 0.3s var(--ease); }
-details.toggle-box[open] .toggle-icon { transform: rotate(-90deg); }
-.toggle-body { padding:0 20px 20px; font-size: 14px; color: var(--text2); line-height: 1.6; word-break: keep-all; }
-.ct-header { display: flex; align-items: center; gap: 10px; }
+/* INTRO STATIC INFO */
+.intro-info-text { margin-top: 10px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 24px 0; }
+.ii-title-row { font-size: 16px; font-weight: 800; color: var(--text); margin-bottom: 20px; letter-spacing: -0.2px; }
+.ii-section { margin-bottom: 24px; }
+.ii-section:last-child { margin-bottom: 0; }
+.ii-sec-title { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+.ii-sec-desc { font-size: 14px; color: var(--text2); line-height: 1.6; word-break: keep-all; }
 .ct-num { background: #F2F4F6; color: var(--text2); font-size: 12px; font-weight: 800; padding: 4px 8px; border-radius: 8px; }
-.intro-meta { text-align:center; font-size:13px; color:var(--text3); margin-top:16px; font-weight: 500;}
 
 /* CENTER SCREEN */
 .center-screen { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:48px 24px; background: var(--bg); }
@@ -176,26 +163,6 @@ details.toggle-box[open] .toggle-icon { transform: rotate(-90deg); }
 .bi-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 14px; }
 .bi-row-label { color: var(--text2); }
 .bi-row-val { font-weight: 700; }
-
-/* PRODUCT CARDS */
-.product-card { display: block; margin-bottom: 16px; } 
-.product-card:last-child { margin-bottom: 0; }
-.product-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
-.product-name  { font-size:20px; font-weight:800; letter-spacing:-0.3px;}
-.product-tag   { font-size:12px; font-weight:700; padding:6px 14px; border-radius:20px; letter-spacing:0.3px; }
-.tag-orange { background:#FFF3E0; color:#FB8C00; }
-.tag-blue   { background:var(--primary-light); color:var(--primary); }
-.tag-gray   { background:#E5E8EB; color:var(--text2); } /* 회색 뱃지 스타일 추가 */
-.product-price { font-size:24px; font-weight:800; color:var(--primary); margin-bottom:6px; letter-spacing:-0.5px;}
-.product-sub   { font-size:14px; color:var(--text2); margin-bottom:16px; font-weight: 400; line-height: 1.5;}
-.pf { font-size:14px; color:var(--text2); display:flex; align-items:flex-start; gap:10px; margin-bottom:6px; font-weight: 400; line-height: 1.4;}
-.pf::before { content:'✓'; color:var(--good); font-weight:700; font-size:14px; line-height: 1.4;}
-
-/* 상조 없이 계산하기용 스타일 */
-.product-card.no-sangjo { background: #F9FAFB; border: 1px solid #E5E8EB; box-shadow: none; transition:all var(--dur) var(--ease); }
-.product-card.no-sangjo .product-name { color: var(--text2); transition: color var(--dur) var(--ease); }
-.product-card.no-sangjo.selected { background: var(--primary-light); box-shadow: inset 0 0 0 2px var(--primary), var(--shadow-card); border-color: transparent; }
-.product-card.no-sangjo.selected .product-name { color: var(--text); }
 
 /* RESULT */
 .result-hero { background: linear-gradient(135deg, var(--primary) 0%, #1750D7 100%); padding:40px 24px; color:#fff; border-radius:var(--radius); margin: 16px 24px 0; box-shadow: var(--shadow-button); }
@@ -230,6 +197,18 @@ details.toggle-box[open] .toggle-icon { transform: rotate(-90deg); }
 .inf-amt { font-size: 18px; font-weight: 800; }
 .inf-amt.red { color: #F04438; }
 
+/* 상조 제안 CTA 박스 */
+.sangjo-cta-box {
+  background: linear-gradient(135deg, #E8F0FF 0%, #D1E0FF 100%);
+  border-radius: var(--radius); padding: 24px; margin: 0 24px;
+  box-shadow: var(--shadow-card); border: 1px solid #BACFFF;
+}
+.s-cta-title { font-size: 18px; color: var(--text); line-height: 1.45; margin-bottom: 16px; letter-spacing: -0.3px; }
+.s-cta-title strong { color: var(--primary); font-weight: 800; }
+.s-cta-list { display: flex; flex-direction: column; gap: 8px; }
+.s-cta-item { display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: var(--text2); line-height: 1.5; font-weight: 500; word-break: keep-all; }
+.s-cta-item::before { content: '✓'; color: var(--good); font-weight: 800; }
+
 .total-row {
   display:flex; justify-content:space-between; align-items:center;
   background:var(--primary); color:#fff; border-radius:var(--radius); padding:22px 24px; gap:12px; margin: 0 24px;
@@ -238,14 +217,21 @@ details.toggle-box[open] .toggle-icon { transform: rotate(-90deg); }
 .total-label  { font-size:17px; font-weight:600; }
 .total-amount { font-size:26px; font-weight:900; letter-spacing:-0.7px; white-space:nowrap; }
 
-/* 결과 페이지 혜택 토글 */
-details.toggle-result { margin: 0 24px; border-radius: var(--radius); }
+/* 결과 페이지 혜택 토글 & 안내 문구 */
+details.toggle-result {
+  background:var(--card); border:none; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-card); margin: 0 24px;
+}
+details.toggle-result summary { padding:18px 20px; font-size:15px; font-weight:700; cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; user-select:none; color: var(--text); }
+details.toggle-result summary::-webkit-details-marker { display:none; }
+.toggle-icon { color: var(--text3); display: flex; align-items: center; justify-content: center; transition: transform 0.3s var(--ease); }
+details.toggle-result[open] .toggle-icon { transform: rotate(-90deg); }
+.toggle-body { padding:0 20px 20px; font-size: 14px; color: var(--text2); line-height: 1.6; word-break: keep-all; }
+
 .benefit-check { display:flex; align-items:center; gap:14px; cursor:pointer; font-size:15px; font-weight:700; padding:8px 0; letter-spacing:-0.1px;}
 .benefit-check input { width:22px; height:22px; accent-color:var(--primary); cursor:pointer; }
 .benefit-desc  { font-size:13px; color:var(--text2); line-height:1.6; margin-top:4px; padding-left:36px; font-weight: 400; letter-spacing: -0.1px;}
 .benefit-disclaimer { font-size:12px; color:var(--text3); margin-top:10px; line-height:1.5; font-weight: 400;}
 
-/* 안내 문구 */
 .result-note {
   background: #E8F0FF; border-radius: var(--radius-sm);
   padding: 16px 20px; margin: 0 24px; 
@@ -281,53 +267,29 @@ details.toggle-result { margin: 0 24px; border-radius: var(--radius); }
       <div class="intro-title-text">
         <div class="intro-title">장례 비용 계산기</div>
         <div class="intro-sub">평균 장례 비용 1,500만 원..<br>미리 확인하고 아껴보세요.</div>
-        <div class="intro-thin">장례는 준비한 만큼 달라집니다.<br>망설이지 마시고 상담까지 받아보세요.</div>
+        <div class="intro-thin">장례는 준비한 만큼 달라집니다.</div>
       </div>
     </div>
     
-    <div class="section-label">장례 비용 구성</div>
-    
-    <details class="toggle-box">
-      <summary>
-        <div class="ct-header"><span class="ct-num">01</span> 장례식장 비용</div>
-        <span class="toggle-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="15 18 9 12 15 6"></polyline>
-          </svg>
-        </span>
-      </summary>
-      <div class="toggle-body">빈소 이용료, 음식비, 제단 장식, 소모품 등 현장에서 직접 지불하는 비용이에요. 조문객 수에 따라 크게 달라져요.</div>
-    </details>
-
-    <details class="toggle-box">
-      <summary>
-        <div class="ct-header"><span class="ct-num">02</span> 상조 서비스 비용</div>
-        <span class="toggle-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="15 18 9 12 15 6"></polyline>
-          </svg>
-        </span>
-      </summary>
-      <div class="toggle-body">수의와 관, 장례 인력, 이송 차량 등이 포함돼요. 미리 가입해두면 고정된 금액으로 현장의 강매나 추가 부담을 막을 수 있어요.</div>
-    </details>
-
-    <details class="toggle-box">
-      <summary>
-        <div class="ct-header"><span class="ct-num">03</span> 장지 비용</div>
-        <span class="toggle-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="15 18 9 12 15 6"></polyline>
-          </svg>
-        </span>
-      </summary>
-      <div class="toggle-body">화장 후 고인을 모실 장소 비용이에요. 공설과 사설의 차이가 수십 배에 달해 미리 정해두는 것이 중요해요.</div>
-    </details>
-
-  </div>
-  
-  <div class="intro-nav">
     <button class="primary-btn" onclick="nav('s-region')">내 예상 비용 계산하기 →</button>
     <div class="intro-meta">무료 · 개인정보 입력 불필요 · 3분 소요</div>
+    
+    <div class="intro-info-text">
+      <div class="ii-title-row">🔍 장례 비용 구성</div>
+      <div class="ii-section">
+        <div class="ii-sec-title"><span class="ct-num">01</span> 장례식장 비용</div>
+        <div class="ii-sec-desc">빈소 이용료, 음식비, 제단 장식, 소모품 등 현장에서 직접 지불하는 비용이에요. 조문객 수에 따라 크게 달라져요.</div>
+      </div>
+      <div class="ii-section">
+        <div class="ii-sec-title"><span class="ct-num">02</span> 상조 서비스 비용</div>
+        <div class="ii-sec-desc">수의와 관, 장례 인력, 이송 차량 등이 포함돼요. 미리 가입해두면 고정된 금액으로 현장에서의 추가 부담을 막을 수 있어요.</div>
+      </div>
+      <div class="ii-section">
+        <div class="ii-sec-title"><span class="ct-num">03</span> 장지 비용</div>
+        <div class="ii-sec-desc">화장 후 고인을 모실 장소 비용이에요. 공설과 사설의 차이가 수십 배에 달해 미리 정해두는 것이 중요해요.</div>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -335,8 +297,8 @@ details.toggle-result { margin: 0 24px; border-radius: var(--radius); }
   <div class="topbar">
     <div class="topbar-row">
       <div class="progress-wrap">
-        <div class="progress-meta"><span>STEP 1 / 6</span><span>지역</span></div>
-        <div class="progress-bar"><div class="progress-fill" style="width:16%"></div></div>
+        <div class="progress-meta"><span>STEP 1 / 5</span><span>지역</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div>
       </div>
     </div>
   </div>
@@ -402,8 +364,8 @@ details.toggle-result { margin: 0 24px; border-radius: var(--radius); }
   <div class="topbar">
     <div class="topbar-row">
       <div class="progress-wrap">
-        <div class="progress-meta"><span>STEP 2 / 6</span><span>조문객</span></div>
-        <div class="progress-bar"><div class="progress-fill" style="width:33%"></div></div>
+        <div class="progress-meta"><span>STEP 2 / 5</span><span>조문객</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:40%"></div></div>
       </div>
     </div>
   </div>
@@ -469,8 +431,8 @@ details.toggle-result { margin: 0 24px; border-radius: var(--radius); }
   <div class="topbar">
     <div class="topbar-row">
       <div class="progress-wrap">
-        <div class="progress-meta"><span>STEP 3 / 6</span><span>제단 장식</span></div>
-        <div class="progress-bar"><div class="progress-fill" style="width:50%"></div></div>
+        <div class="progress-meta"><span>STEP 3 / 5</span><span>제단 장식</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div>
       </div>
     </div>
   </div>
@@ -516,8 +478,8 @@ details.toggle-result { margin: 0 24px; border-radius: var(--radius); }
   <div class="topbar">
     <div class="topbar-row">
       <div class="progress-wrap">
-        <div class="progress-meta"><span>STEP 4 / 6</span><span>제사</span></div>
-        <div class="progress-bar"><div class="progress-fill" style="width:66%"></div></div>
+        <div class="progress-meta"><span>STEP 4 / 5</span><span>제사</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div>
       </div>
     </div>
   </div>
@@ -565,8 +527,8 @@ details.toggle-result { margin: 0 24px; border-radius: var(--radius); }
   <div class="topbar">
     <div class="topbar-row">
       <div class="progress-wrap">
-        <div class="progress-meta"><span>STEP 5 / 6</span><span>장지</span></div>
-        <div class="progress-bar"><div class="progress-fill" style="width:83%"></div></div>
+        <div class="progress-meta"><span>STEP 5 / 5</span><span>장지</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
       </div>
     </div>
   </div>
@@ -606,7 +568,7 @@ details.toggle-result { margin: 0 24px; border-radius: var(--radius); }
       
       <div class="bi-section">
         <div class="bi-sec-title">1차 장지 (화장장)</div>
-        <div class="bi-sec-desc">주민등록상 거주지(관내)인지, 타 지역(관외)인지에 따라 화장장 이용료 차이가 크게 발생해요.</div>
+        <div class="bi-sec-desc">전국 모두 공설로 운영됩니다. 고인의 주민등록 주소지 기준으로 관내/관외 요금이 구분됩니다.</div>
         <div class="bi-row">
           <span class="bi-row-label">관내 (해당 지역 시민)</span>
           <span class="bi-row-val" style="color:var(--primary)">약 10~16만 원</span>
@@ -638,74 +600,7 @@ details.toggle-result { margin: 0 24px; border-radius: var(--radius); }
     </div>
     <div class="nav-buttons">
       <button class="prev-btn" onclick="goPrev('s-burial')">←</button>
-      <button class="next-btn" id="next-s-burial" disabled onclick="goNext('s-burial')">다음</button>
-    </div>
-  </div>
-</div>
-
-<div class="screen" id="s-sangjo">
-  <div class="topbar">
-    <div class="topbar-row">
-      <div class="progress-wrap">
-        <div class="progress-meta"><span>STEP 6 / 6</span><span>상조 상품</span></div>
-        <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
-      </div>
-    </div>
-  </div>
-  <div class="screen-content">
-    <div class="q-label">아정당 상조</div>
-    <div class="q-title">추천 상조 상품을 확인해보세요</div>
-    <div class="q-sub">가입 상품에 따라 서비스와 납입금이 달라져요</div>
-
-    <div class="product-card no-sangjo" id="opt-sangjo-none" onclick="pickProduct(this, 'none')">
-      <div class="product-header" style="margin-bottom:0;">
-        <div class="product-name">상조 없이 계산하기</div>
-        <div class="product-tag tag-gray">상조 미가입 기준</div>
-      </div>
-    </div>
-
-    <div class="product-card" id="opt-sangjo-hundred" onclick="pickProduct(this, 'hundred')">
-      <div class="product-header">
-        <div class="product-name">100원 상조</div>
-        <div class="product-tag tag-orange">순수상조 플랜</div>
-      </div>
-      <div class="product-price">100원 × 300회</div>
-      <div class="product-sub">
-        총 납입 30,000원<br>
-        장례 시점에 150, 250, 350, VIP1, VIP2 중 선택해서 진행<br>
-        장례 이후 상품 금액에서 기납입금의 차액을 일시납
-      </div>
-      <div class="pf">언제든 100% 해약 가능</div>
-      <div class="pf">물가 상승과 무관한 고정 장례비</div>
-      <div class="pf">장례인력 및 용품 제공</div>
-    </div>
-
-    <div class="product-card" id="opt-sangjo-plan99" onclick="pickProduct(this, 'plan99')">
-      <div class="product-header">
-        <div class="product-name">9,900원 상조</div>
-        <div class="product-tag tag-blue">순수상조 플랜</div>
-      </div>
-      <div class="product-price">9,900원 × 150회</div>
-      <div class="product-sub">
-        총 납입 1,485,000원<br>
-        장례 시점에 150, 250, 350, VIP1, VIP2 중 선택해서 진행<br>
-        장례 이후 상품 금액에서 기납입금의 차액을 일시납
-      </div>
-      <div class="pf">언제든 100% 해약 가능</div>
-      <div class="pf">물가 상승과 무관한 고정 장례비</div>
-      <div class="pf">장례인력 및 용품 제공</div>
-    </div>
-
-  </div>
-  
-  <div class="screen-nav">
-    <div class="price-ticker">
-      <div class="ticker-label">현재 예상 비용</div>
-      <div class="ticker-val ticker-v">약 0원</div>
-    </div>
-    <div class="nav-buttons">
-      <button class="prev-btn" onclick="goPrev('s-sangjo')">←</button>
-      <button class="next-btn" id="sangjo-btn" disabled onclick="goToResult()">결과 확인하기</button>
+      <button class="next-btn" id="next-s-burial" disabled onclick="goToResult()">결과 확인하기</button>
     </div>
   </div>
 </div>
@@ -722,7 +617,7 @@ details.toggle-result { margin: 0 24px; border-radius: var(--radius); }
   </div>
 
   <div class="result-hero">
-    <div class="result-eyebrow">예상 장례 총비용</div>
+    <div class="result-eyebrow">상조 미가입 시 예상 총비용</div>
     <div class="result-amount" id="r-total">—</div>
     <div class="result-sub" id="result-sub-desc">서울 평균 기준 · 3일장 · 61개 기관 데이터 반영</div>
   </div>
@@ -736,7 +631,6 @@ details.toggle-result { margin: 0 24px; border-radius: var(--radius); }
         <div class="summary-row"><span class="s-label">제단 장식</span><span class="s-val" id="sum-altar">—</span></div>
         <div class="summary-row"><span class="s-label">제사 종류</span><span class="s-val" id="sum-jesa">—</span></div>
         <div class="summary-row"><span class="s-label">장지 유형</span><span class="s-val" id="sum-burial">—</span></div>
-        <div class="summary-row"><span class="s-label">상조 상품</span><span class="s-val" id="sum-sangjo">—</span></div>
       </div>
     </div>
 
@@ -744,7 +638,7 @@ details.toggle-result { margin: 0 24px; border-radius: var(--radius); }
       <div class="r-section">항목별 예상 비용</div>
       <div class="result-card">
         <div class="r-group-title">장례식장 비용</div>
-        <div class="r-row"><div class="r-label">시설 이용료</div><div class="r-amt" id="r-facility">—</div></div>
+        <div class="r-row"><div class="r-label">빈소 이용료</div><div class="r-amt" id="r-facility">—</div></div>
         <div class="r-row"><div class="r-label">음식비</div><div class="r-amt" id="r-food">—</div></div>
         <div class="r-row"><div class="r-label">제단 장식</div><div class="r-amt" id="r-altar-cost">—</div></div>
         <div class="r-row"><div class="r-label">제사 비용</div><div class="r-amt" id="r-jesa-cost">—</div></div>
@@ -753,14 +647,9 @@ details.toggle-result { margin: 0 24px; border-radius: var(--radius); }
         <hr class="r-divider">
         
         <div class="r-group-title" style="display:flex; justify-content:space-between; align-items:center;">
-          <span id="r-sangjo-group-title">상조 비용</span>
-          <span id="r-sangjo-group-cost" style="display:none; color:var(--text); font-size:15px; font-weight:700;"></span>
+          <span>현장 발생 비용 (장례용품/인력 등)</span>
+          <span style="color:var(--text); font-size:15px; font-weight:700;" id="r-onsite-cost">—</span>
         </div>
-        <div class="r-row" id="r-sangjo-row">
-          <div class="r-label" id="r-sangjo-label">상조 상품</div>
-          <div class="r-amt" id="r-sangjo-cost">—</div>
-        </div>
-        <div id="r-sangjo-desc" style="display:none; font-size:13px; color:var(--text3); padding-top:4px; line-height:1.4;">장례 시점에 150, 250, 350, VIP1, VIP2 중 선택해서 진행됩니다.</div>
         
         <hr class="r-divider">
         
@@ -768,6 +657,29 @@ details.toggle-result { margin: 0 24px; border-radius: var(--radius); }
         <div class="r-row"><div class="r-label">화장 + 봉안</div><div class="r-amt" id="r-burial">—</div></div>
       </div>
     </div>
+
+    <details class="toggle-box toggle-result" style="margin-bottom: 20px;">
+      <summary>
+        추가 혜택 확인하기 (기초생활수급자 · 국가유공자)
+        <span class="toggle-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </span>
+      </summary>
+      <div class="toggle-body">
+        <div style="font-size:13px; color:var(--primary); font-weight:600; margin-bottom:14px; letter-spacing:-0.2px;">해당하는 항목을 선택하시면 할인이 적용된 최종 비용을 바로 확인하실 수 있어요.</div>
+        <div>
+          <label class="benefit-check"><input type="checkbox" id="b-basic" onchange="recalc(false)">기초생활수급자</label>
+          <div class="benefit-desc">공설 화장장 및 공설 봉안당 이용 시 이용료 감면 혜택이 적용돼요. 지자체마다 다르나 30~100% 감면되는 경우가 많아요.</div>
+        </div>
+        <div style="margin-top: 12px;">
+          <label class="benefit-check"><input type="checkbox" id="b-veteran" onchange="recalc(false)">국가유공자</label>
+          <div class="benefit-desc">국가보훈처에 등록된 국가유공자 본인과 배우자는 국립묘지(현충원, 호국원 등) 안장 자격이 있으며, 일반 공설 시설 이용 시 감면 혜택이 적용될 수 있어요.</div>
+        </div>
+        <div class="benefit-disclaimer">※ 지자체·시설별로 감면 범위가 다를 수 있어요. 정확한 확인은 상담을 통해 안내해드려요.</div>
+      </div>
+    </details>
 
     <div class="total-row">
       <div class="total-label">예상 총비용</div>
@@ -789,27 +701,14 @@ details.toggle-result { margin: 0 24px; border-radius: var(--radius); }
       </div>
     </div>
 
-    <details class="toggle-box toggle-result">
-      <summary>
-        추가 혜택 확인하기 (기초생활수급자 · 국가유공자)
-        <span class="toggle-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="15 18 9 12 15 6"></polyline>
-          </svg>
-        </span>
-      </summary>
-      <div class="toggle-body">
-        <div>
-          <label class="benefit-check"><input type="checkbox" id="b-basic" onchange="recalc(false)">기초생활수급자</label>
-          <div class="benefit-desc">공설 화장장 및 공설 봉안당 이용 시 이용료 감면 혜택이 적용돼요. 지자체마다 다르나 30~100% 감면되는 경우가 많아요.</div>
-        </div>
-        <div>
-          <label class="benefit-check"><input type="checkbox" id="b-veteran" onchange="recalc(false)">국가유공자</label>
-          <div class="benefit-desc">국가보훈처에 등록된 국가유공자 본인과 배우자는 국립묘지(현충원, 호국원 등) 안장 자격이 있으며, 일반 공설 시설 이용 시 감면 혜택이 적용될 수 있어요.</div>
-        </div>
-        <div class="benefit-disclaimer">※ 지자체·시설별로 감면 범위가 다를 수 있어요. 정확한 확인은 상담을 통해 안내해드려요.</div>
+    <div class="sangjo-cta-box">
+      <div class="s-cta-title">이 부담스러운 장례 비용,<br><strong>아정당 상조로 확실하게 줄여보세요.</strong></div>
+      <div class="s-cta-list">
+        <div class="s-cta-item">한 달 100원 / 9,900원으로 시작하는 부담 없는 순수 상조</div>
+        <div class="s-cta-item">지금 가입하면 10년 뒤에도 물가 상승 없이 장례비 고정</div>
+        <div class="s-cta-item">약정된 금액 그대로, 불필요한 현장 추가 지출 방지</div>
       </div>
-    </details>
+    </div>
 
     <div class="result-note">
       ※ 위 금액은 대략적인 예상 비용입니다. 보다 정확한 장례 비용과 절차는 전문 상담을 통해 확인해 보세요.
@@ -825,7 +724,7 @@ details.toggle-result { margin: 0 24px; border-radius: var(--radius); }
 
 </div><script>
 /* ── STATE ── */
-const state = { region:null, mourners:null, altar:null, jesa:null, burial:null, sangjo:null };
+const state = { region:null, mourners:null, altar:null, jesa:null, burial:null };
 
 function getRegionKey() {
   return state.region || 'seoul';
@@ -864,8 +763,6 @@ const C = {
     outside:  { none:0, simple:600000, standard:1000000 }
   },
   sangjoNone:  4000000, 
-  sangjoCost:  { hundred:30000,  plan99:1485000, none:0 }, 
-  sangjoLabel: { hundred:'100원 상조', plan99:'9,900원 상조', none:'상조 미가입' },
   burial: {
     'seoul-public':    { crem:150000, bur:500000  },
     'seoul-private':   { crem:150000, bur:2000000 },
@@ -958,13 +855,6 @@ function goNext(screenId) {
   } else if (screenId === 's-jesa') {
     if (!state.jesa) return;
     nav('s-burial');
-  } else if (screenId === 's-burial') {
-    if (!state.burial) return;
-    nav('s-sangjo');
-    if (!state.sangjo) {
-      const noneCard = document.getElementById('opt-sangjo-none');
-      if (noneCard) pickProduct(noneCard, 'none');
-    }
   }
 }
 
@@ -978,8 +868,7 @@ function goPrev(screenId) {
     if (state.mourners === '0') { navBack('s-mourners'); restoreSelections('s-mourners'); }
     else { navBack('s-jesa'); restoreSelections('s-jesa'); }
   }
-  else if (screenId === 's-sangjo')     { navBack('s-burial'); restoreSelections('s-burial'); }
-  else if (screenId === 's-result')     { navBack('s-sangjo'); restoreSelections('s-sangjo'); }
+  else if (screenId === 's-result')     { navBack('s-burial'); restoreSelections('s-burial'); }
   updateTicker();
 }
 
@@ -987,7 +876,7 @@ function goPrev(screenId) {
 function pick(key, value) { state[key] = value; }
 
 function clearSubsequentState(key) {
-  const order = ['region', 'mourners', 'altar', 'jesa', 'burial', 'sangjo'];
+  const order = ['region', 'mourners', 'altar', 'jesa', 'burial'];
   const idx = order.indexOf(key);
   if (idx === -1) return;
 
@@ -997,14 +886,10 @@ function clearSubsequentState(key) {
     const screenId = 's-' + subKey;
     const screen = document.getElementById(screenId);
     if (screen) {
-      screen.querySelectorAll('.opt-card, .product-card').forEach(c => c.classList.remove('selected'));
+      screen.querySelectorAll('.opt-card').forEach(c => c.classList.remove('selected'));
       const nextBtn = document.getElementById('next-' + screenId);
       if (nextBtn) nextBtn.disabled = true;
     }
-  }
-  if (idx < 5) {
-    const sangjoBtn = document.getElementById('sangjo-btn');
-    if (sangjoBtn) sangjoBtn.disabled = true;
   }
 }
 
@@ -1036,23 +921,14 @@ function updateNextBtn(screenId) {
 }
 
 function restoreSelections(screenId) {
-  const map = { 's-region':'region', 's-mourners':'mourners', 's-altar':'altar', 's-jesa':'jesa', 's-burial':'burial', 's-sangjo':'sangjo' };
+  const map = { 's-region':'region', 's-mourners':'mourners', 's-altar':'altar', 's-jesa':'jesa', 's-burial':'burial' };
   const key = map[screenId];
   if (!key) return;
   const val = state[key];
-  document.querySelectorAll('#' + screenId + ' .opt-card, #' + screenId + ' .product-card').forEach(c => {
-    c.classList.toggle('selected', c.dataset.value === val || (key==='sangjo' && c.id.includes(val)));
+  document.querySelectorAll('#' + screenId + ' .opt-card').forEach(c => {
+    c.classList.toggle('selected', c.dataset.value === val);
   });
-  if (screenId !== 's-sangjo') updateNextBtn(screenId);
-  else document.getElementById('sangjo-btn').disabled = !val;
-}
-
-function pickProduct(el, value) {
-  state.sangjo = value;
-  document.querySelectorAll('.product-card').forEach(c => c.classList.remove('selected'));
-  el.classList.add('selected');
-  document.getElementById('sangjo-btn').disabled = false;
-  updateTicker(); 
+  updateNextBtn(screenId);
 }
 
 function resetRegionForRetry() {
@@ -1135,10 +1011,8 @@ function calcPartial() {
     const bKey = getBurialKey(state.burial);
     total += C.burial[bKey].crem + C.burial[bKey].bur;
   }
-  if (state.sangjo !== null) {
-    const dynamicSangjoNone = (m === '0') ? 2000000 : C.sangjoNone;
-    total += (state.sangjo === 'none') ? dynamicSangjoNone : C.sangjoCost[state.sangjo];
-  }
+  
+  // 현장 발생 비용은 스텝 진행 중인 틱커에는 더하지 않음.
   return total;
 }
 
@@ -1178,13 +1052,11 @@ function recalc(isInit = false) {
   }
 
   const burialTotal = crem + bur;
-
-  const dynamicSangjoNone = (m === '0') ? 2000000 : C.sangjoNone; 
-  const isNoSangjo = (!state.sangjo || state.sangjo === 'none');
   
-  const totalNoSangjo   = facility + food + misc + altarCost + jesaCost + dynamicSangjoNone + burialTotal;
-  const totalWithSangjo = facility + food + misc + altarCost + jesaCost + (isNoSangjo ? dynamicSangjoNone : C.sangjoCost[state.sangjo]) + burialTotal;
-  const displayTotal    = isNoSangjo ? totalNoSangjo : totalWithSangjo;
+  // 결과 확인하기 버튼을 누르는 시점에 2백/4백만원 현장 발생 비용 추가 계산
+  const dynamicSangjoNone = (m === '0') ? 2000000 : C.sangjoNone; 
+  
+  const displayTotal = facility + food + misc + altarCost + jesaCost + dynamicSangjoNone + burialTotal;
 
   if (isInit) {
     animateResultTotal('r-total', displayTotal);
@@ -1211,40 +1083,13 @@ function recalc(isInit = false) {
   set('r-altar-cost',  m !== '0' ? '약 ' + fmt(altarCost) : '해당 없음');
   set('r-jesa-cost',   m !== '0' ? '약 ' + fmt(jesaCost) : '해당 없음');
   set('r-misc',        '약 ' + fmt(misc));
-  
-  const descEl = document.getElementById('r-sangjo-desc');
-  if (isNoSangjo) {
-    set('r-sangjo-group-title', '현장 발생 비용');
-    document.getElementById('r-sangjo-group-cost').style.display = 'block';
-    set('r-sangjo-group-cost', '약 ' + fmt(dynamicSangjoNone));
-    document.getElementById('r-sangjo-row').style.display = 'none';
-    if (descEl) descEl.style.display = 'none'; 
-  } else {
-    set('r-sangjo-group-title', '상조 비용');
-    document.getElementById('r-sangjo-group-cost').style.display = 'none';
-    document.getElementById('r-sangjo-row').style.display = 'flex';
-    set('r-sangjo-label', C.sangjoLabel[state.sangjo]);
-    set('r-sangjo-cost', '약 ' + fmt(C.sangjoCost[state.sangjo]) + ' (납입금)');
-    
-    if (descEl) {
-      if (state.sangjo === 'hundred' || state.sangjo === 'plan99') {
-        descEl.style.display = 'block';
-      } else {
-        descEl.style.display = 'none';
-      }
-    }
-  }
-    
-  set('r-burial', '약 ' + fmt(burialTotal));
+  set('r-onsite-cost', '약 ' + fmt(dynamicSangjoNone));
+  set('r-burial',      '약 ' + fmt(burialTotal));
 
   const infBox = document.getElementById('inflation-box');
-  if (isNoSangjo) {
-    infBox.style.display = 'block';
-    set('inf-current', '약 ' + fmt(totalNoSangjo));
-    set('inf-future', '약 ' + fmt(Math.floor(totalNoSangjo * 1.2))); 
-  } else {
-    infBox.style.display = 'none';
-  }
+  infBox.style.display = 'block';
+  set('inf-current', '약 ' + fmt(displayTotal));
+  set('inf-future', '약 ' + fmt(Math.floor(displayTotal * 1.2))); 
 
   const regionMap  = { seoul:'서울', gyeonggi:'경기', incheon:'인천', outside:'그 외 지역' };
   const mournerMap = { '0':'0명 (무빈소)', '50':'50명 미만', '100':'약 100명', '200':'약 200명', '300':'약 300명 이상' };
@@ -1257,7 +1102,6 @@ function recalc(isInit = false) {
   set('sum-altar',    m !== '0' ? (altarMap[state.altar] || '선택 안 함') : '해당 없음 (무빈소)');
   set('sum-jesa',     m !== '0' ? (jesaMap[state.jesa] || '선택 안 함') : '해당 없음 (무빈소)');
   set('sum-burial',   burialMap[state.burial]   || '—');
-  set('sum-sangjo',   C.sangjoLabel[state.sangjo] || '—');
 }
 
 function set(id, html) {
@@ -1272,11 +1116,10 @@ function goToResult() {
 
 /* ── RESET ── */
 function resetAll() {
-  state.region = state.mourners = state.altar = state.jesa = state.burial = state.sangjo = null;
+  state.region = state.mourners = state.altar = state.jesa = state.burial = null;
   document.getElementById('b-basic').checked = false;
   document.getElementById('b-veteran').checked = false;
-  document.getElementById('sangjo-btn').disabled = true;
-  document.querySelectorAll('.opt-card, .product-card').forEach(c => c.classList.remove('selected'));
+  document.querySelectorAll('.opt-card').forEach(c => c.classList.remove('selected'));
   document.querySelectorAll('.ticker-v').forEach(el => el.textContent = '약 0원');
   ['next-s-region','next-s-mourners','next-s-altar','next-s-jesa','next-s-burial'].forEach(id => {
     const btn = document.getElementById(id);
